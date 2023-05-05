@@ -39,16 +39,8 @@
           <span> 商城管理员用户名: mall123</span>
           <span> 商城管理员用户名：mall123</span>
         </div>
-        <div class="tips">
-          <span> 推广管理员用户名: promotion123</span>
-          <span> 推广管理员用户名：promotion123</span>
-        </div>
       </div>
     </el-form>
-
-    <div class="copyright">
-      Copyright © 2022 xxx.com 版权所有 <a href="https://github.com/linlinjava/litemall">沪ICP备xxx号</a>
-    </div>
   </div>
 </template>
 
@@ -132,8 +124,6 @@ export default {
 </script>
 
 <style lang="scss">
-/* 修复input 背景不协调 和光标变色 */
-/* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */
 
 $bg:#283443;
 $light_gray:#fff;

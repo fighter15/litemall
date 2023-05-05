@@ -2,7 +2,6 @@
   <div class="tabbar-user">
     <user-header :isLogin="isLogin"/>
     <order-group/>
-    <coupon-group/>
     <user-module/>
   </div>
 </template>
@@ -10,7 +9,6 @@
 <script>
 import userHeader from './tabbar-user-header';
 import orderGroup from './tabbar-user-order';
-import couponGroup from './tabbar-user-coupon';
 import userModule from './tabbar-user-module';
 
 export default {
@@ -34,7 +32,6 @@ export default {
   components: {
     [userHeader.name]: userHeader,
     [orderGroup.name]: orderGroup,
-    [couponGroup.name]: couponGroup,
     [userModule.name]: userModule
   }
 };

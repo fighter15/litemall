@@ -1,7 +1,7 @@
 {
-  "name": "litemall-admin",
+  "name": "homeappliances-admin",
   "version": "1.0.0",
-  "description": "litemall-admin basing on vue-element-admin 4.3.0",
+  "description": "homeappliances-admin basing on vue-element-admin 4.3.0",
   "author": "linlinjava <linlinjava@163.com>",
   "license": "MIT",
   "scripts": {
@@ -35,13 +35,6 @@
     "admin-template",
     "management-system"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/linlinjava/litemall.git"
-  },
-  "bugs": {
-    "url": "https://github.com/linlinjava/litemall/issues"
-  },
   "dependencies": {
     "@tinymce/tinymce-vue": "3.0.1",
     "axios": ">=0.21.2",

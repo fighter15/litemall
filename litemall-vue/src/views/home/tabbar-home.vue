@@ -1,9 +1,7 @@
 <template>
   <div class="tab_home">
     <div class="tal_class_searchBox">
-      <van-search placeholder="点击前往搜索"
-                  @click="$router.push({ name: 'search' })" />
-      <div class="tal_class_searchMask"></div>
+      <span class="home_title">家电商城</span>
     </div>
     <van-swipe :autoplay="3000"
                indicator-color="white">
@@ -24,86 +22,6 @@
         <span>{{channel.name}}</span>
       </div>
     </div>
-
-    <van-panel title="优惠券"
-               style=" padding-bottom: 10px;">
-      <div class="van-coupon-item"
-           v-for="(coupon,index) in shopInfos.couponList"
-           :key="index"
-           @click="getCoupon(coupon.id)">
-        <div class="van-coupon-item__content">
-          <div class="van-coupon-item__head">
-            <h2>
-              <span>¥</span>
-              {{coupon.discount}} 元
-            </h2>
-            <p>{{coupon.desc }} - {{coupon.tag}}</p>
-          </div>
-          <div class="van-coupon-item__body">
-            <h2>{{coupon.name}}</h2>
-            <p>有效期：{{coupon.days}} 天</p>
-
-          </div>
-        </div>
-
-      </div>
-    </van-panel>
-
-    <van-panel>
-      <van-card :thumb-link="goDetail(grouponGood.id)"
-                v-for="(grouponGood ,index) in shopInfos.grouponList"
-                :key="index"
-                :title="grouponGood.name"
-                :desc="grouponGood.brief"
-                :origin-price="grouponGood.retailPrice"
-                :price="grouponGood.grouponPrice +'.00'"
-                :thumb="grouponGood.picUrl"
-                @native-click="goDetail(grouponGood.id)">
-        <div slot="tags"
-             class="card__tags">
-          <van-tag plain
-                   type="primary">
-            {{grouponGood.grouponMember}}人成团
-          </van-tag>
-          <van-tag plain
-                   type="danger">
-            {{grouponGood.grouponDiscount}}元再减
-          </van-tag>
-        </div>
-      </van-card>
-      <div slot='header'>
-        <van-cell-group>
-          <van-cell title="团购专区"
-                    isLink>
-            <router-link to="/items/groupon"
-                         class="text-desc">更多团购商品</router-link>
-          </van-cell>
-        </van-cell-group>
-      </div>
-    </van-panel>
-
-    <van-panel>
-      <van-grid clickable
-                :column-num="2">
-        <van-grid-item v-for="(brand ,index) in shopInfos.brandList"
-                       :key="index"
-                       :text="brand.name"
-                       :url="goBrand(brand.id)">
-          <img :src="brand.picUrl"
-               style="width: 80%;" />
-          <div style="font-size:16px;"> {{ brand.name }}</div>
-        </van-grid-item>
-      </van-grid>
-      <div slot='header'>
-        <van-cell-group>
-          <van-cell title="品牌商直供"
-                    isLink>
-            <router-link to="/items/brand-list"
-                         class="text-desc">更多品牌商</router-link>
-          </van-cell>
-        </van-cell-group>
-      </div>
-    </van-panel>
 
     <van-panel>
       <van-row gutter>
@@ -147,29 +65,6 @@
                     isLink>
             <router-link to="/items/hot"
                          class="text-desc">更多人气推荐</router-link>
-          </van-cell>
-        </van-cell-group>
-      </div>
-    </van-panel>
-
-<van-panel>
-      <van-grid clickable
-                :column-num="2">
-        <van-grid-item v-for="(topic ,index) in shopInfos.topicList"
-                       :key="index"
-                       :url="goTopic(topic.id)">
-          <img :src="topic.picUrl"
-               style="width: 90%; max-height: 150px;" />
-          <div style="font-size:14px;color:#ab956d;"> {{ topic.title }}</div>
-          <div style="font-size:10px;color:#ab956d;"> {{ topic.subtitle }}</div>
-        </van-grid-item>
-      </van-grid>
-      <div slot='header'>
-        <van-cell-group>
-          <van-cell title="专题精选"
-                    isLink>
-            <router-link to="/items/topic-list"
-                         class="text-desc">更多专题精选</router-link>
           </van-cell>
         </van-cell-group>
       </div>
@@ -270,6 +165,15 @@ export default {
 
 
 <style lang="scss" scoped>
+.tal_class_searchBox{
+  text-align: center;
+}
+.home_title{
+  height: 50px;
+  line-height: 50px;
+  font-size: 15px;
+  font-weight: 500;
+}
 .interval_bot {
   margin-bottom: 10px;
 }

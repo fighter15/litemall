@@ -5,21 +5,6 @@
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
-      <template v-if="device!=='mobile'">
-
-        <el-tooltip content="全屏" effect="dark" placement="bottom">
-          <screenfull class="right-menu-item" />
-        </el-tooltip>
-
-        <el-tooltip content="布局大小" effect="dark" placement="bottom">
-          <size-select class="right-menu-item" />
-        </el-tooltip>
-
-        <el-tooltip content="通知中心" effect="dark" placement="bottom">
-          <notice class="right-menu-item" />
-        </el-tooltip>
-      </template>
-
       <el-dropdown class="avatar-container right-menu-item" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
@@ -31,16 +16,6 @@
               首页
             </el-dropdown-item>
           </router-link>
-          <el-dropdown-item divided>
-            <a target="_blank" href="https://github.com/linlinjava/litemall">
-              GitHub
-            </a>
-          </el-dropdown-item>
-          <el-dropdown-item>
-            <a target="_blank" href="https://gitee.com/linlinjava/litemall">
-              码云
-            </a>
-          </el-dropdown-item>
           <el-dropdown-item divided>
             <router-link to="/profile/password">
               密码修改
