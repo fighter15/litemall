@@ -2,7 +2,7 @@
   "name": "homeappliances-vue",
   "version": "0.1.0",
   "description": "homeappliances-vue basing on vant--mobile-mall 0.1.0",
-  "author": "homeappliances",
+  "author": "homeappliances <linlinjava@163.com>",
   "license": "MIT",
   "private": true,
   "scripts": {

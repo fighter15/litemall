@@ -12,23 +12,26 @@
     <!-- 查询结果 -->
     <el-table v-loading="listLoading" :data="list" element-loading-text="正在查询中。。。" border fit highlight-current-row>
 
-      <el-table-column align="center" label="反馈ID" prop="id"/>
+      <el-table-column width="60" align="center" label="反馈ID" prop="id"/>
 
-      <el-table-column align="center" label="用户名" prop="username"/>
+      <el-table-column width="100" align="center" label="用户名" prop="username"/>
 
       <el-table-column align="center" label="手机号码" prop="mobile"/>
 
-      <el-table-column align="center" label="反馈类型" prop="feedType"/>
+      <el-table-column align="center" label="服务类型" prop="feedType"/>
 
-      <el-table-column align="center" label="反馈内容" prop="content"/>
-
-      <el-table-column align="center" label="反馈图片" prop="picUrls">
-        <template slot-scope="scope">
-          <el-image v-for="item in scope.row.picUrls" :key="item" :src="item" :preview-src-list="scope.row.picUrls" :lazy="true" style="width: 40px; height: 40px; margin-right: 5px;"/>
-        </template>
-      </el-table-column>
+      <el-table-column align="center" label="服务内容" prop="content"/>
 
       <el-table-column align="center" label="时间" prop="addTime"/>
+
+      <el-table-column width="100" align="center" label="审核状态" prop="audit"/>
+
+      <el-table-column align="center" label="操作" prop="clicked">
+        <template slot-scope="scope">
+          <el-button :disabled="scope.row.clicked" type="primary" @click="clickButton(scope, 1)">通过</el-button>
+          <el-button :disabled="scope.row.clicked" type="warning" @click="clickButton(scope, 2)">拒绝</el-button>
+        </template>
+      </el-table-column>
 
     </el-table>
 
@@ -67,6 +70,10 @@ export default {
       this.listLoading = true
       listFeedback(this.listQuery).then(response => {
         this.list = response.data.data.list
+        this.list.forEach(item => {
+          item.clicked = false
+          item.audit = '未审核'
+        })
         this.total = response.data.data.total
         this.listLoading = false
       }).catch(() => {
@@ -75,6 +82,14 @@ export default {
         this.listLoading = false
       })
     },
+    clickButton(scope, state) {
+      scope.row.clicked = true
+      if (state === 1) {
+        scope.row.audit = '已通过'
+      } else {
+        scope.row.audit = '已拒绝'
+      }
+    },
     handleFilter() {
       this.listQuery.page = 1
       this.getList()
@@ -82,9 +97,9 @@ export default {
     handleDownload() {
       this.downloadLoading = true
       import('@/vendor/Export2Excel').then(excel => {
-        const tHeader = ['反馈ID', '用户名称', '反馈内容', '反馈图片列表', '反馈时间']
+        const tHeader = ['ID', '用户名称', '维修内容', '维修图片列表', '时间']
         const filterVal = ['id', 'username', 'content', 'picUrls', 'addTime']
-        excel.export_json_to_excel2(tHeader, this.list, filterVal, '意见反馈信息')
+        excel.export_json_to_excel2(tHeader, this.list, filterVal, '维修信息')
         this.downloadLoading = false
       })
     }

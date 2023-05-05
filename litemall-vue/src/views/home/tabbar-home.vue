@@ -1,7 +1,7 @@
 <template>
   <div class="tab_home">
     <div class="tal_class_searchBox">
-      <span class="home_title">家电商城</span>
+      <span>家电商城</span>
     </div>
     <van-swipe :autoplay="3000"
                indicator-color="white">
@@ -167,12 +167,10 @@ export default {
 <style lang="scss" scoped>
 .tal_class_searchBox{
   text-align: center;
-}
-.home_title{
+  font-size: 18px;
+  font-weight: 500;
   height: 50px;
   line-height: 50px;
-  font-size: 15px;
-  font-weight: 500;
 }
 .interval_bot {
   margin-bottom: 10px;

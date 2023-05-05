@@ -1,13 +1,13 @@
 <template>
   <div>
-<van-cell-group title="服务类型">
+<van-cell-group title="安装类型">
     <van-cell class="order-coupon" :title="type" is-link arrow-direction="down" @click="showList = true" />
 </van-cell-group>
-<van-cell-group title="服务信息">
+<van-cell-group title="安装信息">
 
   <van-field v-model="content" 
     clearable autosize center
-    placeholder="请告诉我们平台订单编号及服务内容..." 
+    placeholder="请告诉我们需安装电器种类、品牌..." 
     type="textarea"
     rows="10"
     size="large"
@@ -38,7 +38,7 @@ export default {
       mobile: '',
       content: '',
       showList: false,
-      types:['商品维修', '商品上门安装', '其他'],
+      types:['平台电器安装', '自购电器安装', '安装质量问题'],
       type: ''
     };
   },
@@ -55,11 +55,11 @@ export default {
         return;
       }
       if(this.type === ''){
-        this.$toast("请选择服务类型");
+        this.$toast("请选择安装类型");
         return;
       }
       if(this.content === ''){
-        this.$toast("请输入服务信息");
+        this.$toast("请输入安装信息");
         return;
       }      
       feedbackAdd({ mobile: this.mobile, feedType: this.type, content: this.content}).then(res => {
